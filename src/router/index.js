@@ -19,7 +19,7 @@ export const routes = [
   },
   {
     id: 2,
-    path: "/contact",
+    path: "/contact/:id",
     name: "contact",
     component: ContactComp,
   },
