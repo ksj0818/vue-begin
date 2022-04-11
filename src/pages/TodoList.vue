@@ -1,8 +1,8 @@
 <template>
   <div>
     todos :
-    <ul v-for="todo in todos" :key="todo.id">
-      <li>할일: {{ todo.todo }}</li>
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">할일: {{ todo.todo }}</li>
     </ul>
   </div>
   <input
