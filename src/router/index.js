@@ -2,6 +2,7 @@ import AboutComp from "../pages/AboutComp";
 import HomeComp from "../pages/HomeComp";
 import ContactComp from "../pages/ContactComp";
 import PortfolioComp from "../pages/PortfolioComp";
+import TodoList from "../pages/TodoList";
 import { createRouter, createWebHistory } from "vue-router";
 
 export const routes = [
@@ -28,6 +29,12 @@ export const routes = [
     path: "/portfolio",
     name: "portfolio",
     component: PortfolioComp,
+  },
+  {
+    id: 4,
+    path: "/todolist",
+    name: "todolist",
+    component: TodoList,
   },
 ];
 
