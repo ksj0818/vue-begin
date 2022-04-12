@@ -12,6 +12,12 @@ const store = createStore({
   },
 
   mutations: {
+    // Todo 삭제
+    deleteTodo(state, data) {
+      // data(key) 값에서 -1 해주면 인덱스 값 추출, 해당 인덱스 값 삭제
+      state.todos.splice(data, 1);
+    },
+    // Todo 추가
     insertTodo(state, todo) {
       state.todos.push(todo);
     },

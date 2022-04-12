@@ -2,7 +2,10 @@
   <div>
     todos :
     <ul>
-      <li v-for="todo in todos" :key="todo.id">할일: {{ todo.todo }}</li>
+      <li v-for="(todo, index) in todos" :key="todo.id">
+        할일: {{ todo.todo }}
+        <button :data-index="index" @click="deleteBtn">삭제</button>
+      </li>
     </ul>
   </div>
   <input
@@ -12,7 +15,7 @@
     @keydown.enter="addBtn"
     @input="changeInput"
   />
-  <button @click="addBtn">추가</button>
+  <button @click="insertBtn">추가</button>
 </template>
 <script>
 import { computed, ref } from "vue";
@@ -26,10 +29,20 @@ export default {
     const store = useStore();
     const todos = computed(() => store.state.todos);
     const insert = (todo) => store.commit("insertTodo", todo);
+    const deleteTodo = (_parentNode) => store.commit("deleteTodo", _parentNode);
     const changeInput = (e) => {
       ref1.value = e.target.value.trim();
     };
-    const addBtn = () => {
+    console.log("sdsd", process.env.VUE_APP_KEY);
+    // 삭제 버튼 클릭 시
+    const deleteBtn = (e) => {
+      console.log("deletebtn : ", e.target.dataset.index);
+      const targetBtn = e.target.dataset.index;
+      deleteTodo(targetBtn);
+    };
+
+    // 추가 버튼 클릭 시
+    const insertBtn = () => {
       console.log("버튼 클릭 시 : ", input1);
       input1.value.value = "";
       input1.value.focus();
@@ -41,7 +54,7 @@ export default {
       insert(todo);
       ref1.value = "";
     };
-    return { todos, changeInput, addBtn, input1 };
+    return { todos, changeInput, insertBtn, deleteBtn, input1 };
   },
 };
 </script>
