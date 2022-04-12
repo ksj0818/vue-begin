@@ -4,7 +4,7 @@
       <router-link :to="route.path">{{ route.name }}</router-link>
     </div>
     <h1>{{ data }}</h1>
-    <button @click="changeData">chang4</button>
+    <button @click="changeData">change4</button>
   </header>
 </template>
 <script>
